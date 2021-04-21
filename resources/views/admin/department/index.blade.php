@@ -47,12 +47,13 @@
                                                 <td>{{$department->name}}</td>
                                                 <td>{{$department->description}}</td>
                                                 <td><a href="{{route('departments.edit',[$department->id])}}"><i class="fas fa-edit"></i></a></td>
-                                                <td><a href="" data-toggle="modal" data-target="#exampleModal"><i class="fas fa-trash"></i>
+                                                <td><a href="" data-toggle="modal" data-target="#exampleModal{{$department->id}}"><i class="fas fa-trash"></i>
                                                 </a>
                                                 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="exampleModal{{$department->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
-    <form>
+    <form action="{{route('departments.destroy', [$department->id])}}" method="post">@csrf
+      {{method_field('DELETE')}}
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">Delete Department</h5>
