@@ -45,50 +45,51 @@
                     </td>
                     <td>{{$user->name}}</td>
                     <td>{{$user->email}}</td>
-                    <td><span class="badge badge-success">{{$user->role_id}}</span></td>
-                    <td>{{$user->department_id}}</td>
+                    <td><span class="badge badge-success">{{$user->role->name}}</span></td>
+                    <td>{{$user->department->name}}</td>
                     <td>{{$user->designation}}</td>
                     <td>{{$user->start_from}}</td>
                     <td>{{$user->address}}</td>
                     <td>{{$user->mobile_number}}</td>
-                    <td>
-                        <!-- @if(isset(auth()->user()->role->permission['name']['user']['can-edit'])) -->
-                        <a href="{{route('users.edit',[$user->id])}}"><i class="fas fa-edit"></i></a><!-- @endif -->
-                    </td>
-                    <td>
-                   <!--  @if(isset(auth()->user()->role->permission['name']['user']['can-delete'])) -->
-                    <a href="#" data-toggle="modal" data-target="#exampleModal{{$user->id}}">
-                        <i class="fas fa-trash"></i>
-                    </a>
-                   <!--  @endif -->
-                    <!-- Modal -->
+                    <td><a href="{{route('users.edit',[$user->id])}}"><i class="fas fa-edit"></i></a></td>
+                    <td><a href="" data-toggle="modal" data-target="#exampleModal{{$user->id}}"><i class="fas fa-trash"></i></a>
 
-                <div class="modal fade" id="exampleModal{{$user->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                  <div class="modal-dialog" role="document">
-                    <form action="{{route('users.destroy',[$user->id])}}" method="post">@csrf
-                        {{method_field('DELETE')}}
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Delete Confirm</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                          <span aria-hidden="true">&times;</span>
-                        </button>
-                      </div>
-                      <div class="modal-body">
-                        Do you want to delete?
-                      </div>
-                      <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                        <button type="submit" class="btn btn-danger">Delete</button>
+
+                        <!-- @if(isset(auth()->user()->role->permission['name']['user']['can-edit'])) -->
+                        <!-- <td><a href="{{route('users.edit',[$user->id])}}"><i class="fas fa-edit"></i></a></td> -->
+                        <!-- @endif -->
+
+                       <!--  @if(isset(auth()->user()->role->permission['name']['user']['can-delete'])) -->
+                        <!-- <td><a href="" data-toggle="modal" data-target="#exampleModal{{$user->id}}"><i class="fas fa-trash"></i></a> -->
+                       <!--  @endif -->
+
+                      
+                                    <div class="modal fade" id="exampleModal{{$user->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <div class="modal-dialog">
+                        <form action="{{route('users.destroy', [$user->id])}}" method="post">@csrf
+                          {{method_field('DELETE')}}
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Delete User</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                          <div class="modal-body">
+                            Do you want to delete {{$user->name}}?
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                          </div>
+                        </div>
+                    </form>
                       </div>
                     </div>
-                  </form>
-                  </div>
-                </div>
-                <!--Modal end-->
-                   
-                    </td>
-                </tr>
+
+                                            </td>
+                                            </tr>
+
                 @endforeach
                 @else
                 <td>No users to display</td>
