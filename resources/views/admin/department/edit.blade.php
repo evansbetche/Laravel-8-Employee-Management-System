@@ -1,4 +1,4 @@
-@extends('admin.layouts.master')
+@extends('admin.layouts.main')
 
 @section('content')
 <div class="container mt-5">
