@@ -66,6 +66,8 @@ class RoleController extends Controller
     public function edit($id)
     {
         //
+        $role = Role::find($id);
+        return view('admin.role.edit', compact('role'));
     }
 
     /**
@@ -78,6 +80,12 @@ class RoleController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $this->validate($request, [
+            'name'=>'required|unique:roles,name,'.$id]);
+
+        $role = Role::find($id);
+        $role->update($request->all());
+        return redirect()->route('roles.index')->with('message', 'Role updated successfully');
     }
 
     /**
@@ -89,5 +97,7 @@ class RoleController extends Controller
     public function destroy($id)
     {
         //
+        Role::find($id)->delete();
+        return redirect()->route('roles.index')->with('message', 'Role deleted successfully');
     }
 }

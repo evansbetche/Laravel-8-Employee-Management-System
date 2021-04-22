@@ -22,23 +22,21 @@
                             </div>
 
                         <!--     roles side navbar -->
-                        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
+
+                        
+                            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
                                 <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
                                 Roles
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                             </a>
                             <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="{{route('roles.create')}}">Create Role</a>
-                                    <a class="nav-link" href="{{route('roles.index')}}">View Roles</a>
+                                    <a class="nav-link" href="{{route('roles.create')}}">Create Department</a>
+                                    <a class="nav-link" href="{{route('roles.index')}}">View Departments</a>
                                 </nav>
                             </div>
 
-                        <!-- end of roles side navbar -->
-                                   
-                            
-                                </nav>
-                            </div>
+
                             <div class="sb-sidenav-menu-heading">Addons</div>
                             <a class="nav-link" href="charts.html">
                                 <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
