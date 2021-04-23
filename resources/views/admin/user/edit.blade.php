@@ -46,7 +46,7 @@
                     <div class="form-group">
                         <label>Department</label>
                          <select class="form-control" name="department_id" required="">
-                            @foreach(App\Department::all() as $department)
+                            @foreach(App\Models\Department::all() as $department)
 
                                 <option value="{{$department->id}}"@if($user->department_id==$department->id)selected @endif>{{$department->name}}</option>
                             @endforeach
@@ -106,7 +106,7 @@
                     <div class="form-group">
                         <label>Role</label>
                         <select class="form-control" name="role_id" required="">
-                            @foreach(App\Role::all() as $role)
+                            @foreach(App\Models\Role::all() as $role)
 
                                 <option value="{{$role->id}}"@if($user->role_id==$role->id)selected @endif>{{$role->name}}</option>
                             @endforeach
