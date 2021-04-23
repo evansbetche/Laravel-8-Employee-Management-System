@@ -54,8 +54,9 @@ class UserController extends Controller
         
          $data = $request->all();
         if($request->hasFile('image')){
-            $image = $request->image->hashName();
+            $image = $request->image->hasName();
             $request->image->move(public_path('profile'),$image);
+
         }else{
             $image = 'avatar.png';
         }
