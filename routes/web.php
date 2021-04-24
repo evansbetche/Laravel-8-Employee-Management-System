@@ -26,10 +26,17 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 // 	return view('admin.create');
 // });
 
-Route::view('/employee','admin.create');
+ Route::group(['middleware'=>'auth'], function(){
+
 
 Route::resource('departments', 'DepartmentController');
 
 Route::resource('roles', 'RoleController');
 
 Route::resource('users', 'UserController');
+
+ });
+
+Auth::routes();
+
+
